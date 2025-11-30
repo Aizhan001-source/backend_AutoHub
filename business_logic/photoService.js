@@ -1,4 +1,4 @@
-import { photoRepository } from "../data_acces/photoRepository.js";
+import { photoRepository } from "../data_access/photoRepository.js";
 
 export const photoService = {
   async getAll() {

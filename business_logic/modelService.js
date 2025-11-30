@@ -1,4 +1,4 @@
-import { modelRepository } from "../data_acces/modelRepository.js";
+import { modelRepository } from "../data_access/modelRepository.js";
 
 export const modelService = {
   async getAll() {

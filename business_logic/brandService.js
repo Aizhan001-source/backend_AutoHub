@@ -1,4 +1,4 @@
-import { brandRepository } from "../data_acces/brandRepository.js";
+import { brandRepository } from "../data_access/brandRepository.js";
 
 export const brandService = {
   async getAll() {

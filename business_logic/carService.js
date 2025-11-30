@@ -1,4 +1,4 @@
-import { carRepository } from "../data_acces/carRepository.js";
+import { carRepository } from "../data_access/carRepository.js";
 
 export const carService = {
   async getAll() {

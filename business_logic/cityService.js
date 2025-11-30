@@ -1,4 +1,4 @@
-import { cityRepository } from "../data_acces/cityRepository.js";
+import { cityRepository } from "../data_access/cityRepository.js";
 
 export const cityService = {
   async getAll() {

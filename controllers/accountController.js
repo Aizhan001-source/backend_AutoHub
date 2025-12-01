@@ -54,15 +54,17 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
-    const authHeader = req.headers.authorization;
-    console.log("ckdcdvvhih", authHeader);
+    let token = req.body.token || null;
+    if (!token) {
+        const authHeader = req.headers.authorization;
+        if (authHeader && authHeader.startsWith("Bearer ")) {
+            token = authHeader.split(" ")[1];
+        }
+    }
 
-    if (!authHeader) return res.status(400).json({ message: "No token" });
-    const token = authHeader.split(" ")[1];
-    
+    if (!token) return res.status(400).json({ message: "No token" });
 
     const result = await userService.logoutUser(token);
-
     res.json({ message: result });
 };
 

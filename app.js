@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import citiesRouter from './routes/cities.js';
 import carsRouter from './routes/cars.js';
@@ -7,14 +8,16 @@ import brandsRouter from './routes/brands.js';
 import modelsRouter from './routes/models.js';
 import optionsRouter from './routes/options.js';
 import photosRouter from './routes/photos.js';
-import sourcesRouter from './routes/sources.js'; 
+import sourcesRouter from './routes/sources.js';
 import accountRouter from './routes/account.js';
 import passRouter from './routes/pass.js';
+import creditRouter from './routes/credit.js'; 
+import creditScheduleRouter from "./routes/creditSchedule.js";
 
 import { logger } from './middlewares/logger.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
-dotenv.config(); 
+dotenv.config();
 
 const app = express();
 
@@ -23,18 +26,20 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
 app.use(logger);
 
+// Маршруты
 app.use('/api/cities', citiesRouter);
 app.use('/api/cars', carsRouter);
 app.use('/api/brands', brandsRouter);
 app.use('/api/models', modelsRouter);
 app.use('/api/options', optionsRouter);
 app.use('/api/photos', photosRouter);
-app.use('/api/sources', sourcesRouter);   
-app.use('/api/account', accountRouter); 
-app.use('/api/pass', passRouter); 
+app.use('/api/sources', sourcesRouter);
+app.use('/api/account', accountRouter);
+app.use('/api/pass', passRouter);
+app.use('/api/credits', creditRouter); 
+app.use("/api/credit-schedules", creditScheduleRouter);
 
 app.get('/', (req, res) => {
   res.send(`API работает! Base URL: ${process.env.API_URL}`);
